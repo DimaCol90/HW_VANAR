@@ -22,7 +22,7 @@ human_in_lift       = True
 os.system("cls")
 while True:
     
-    human_floor=int(input('Where is the human? '))
+    human_floor=int(input('\n\n------------\n\nWhere is the human? '))
     human_in_lift=input('Is human inside the lift?(y/n) ')=='y'
     call_lift = input('call the lift? y/n ')=='y'
 
@@ -68,6 +68,7 @@ while True:
             t='     '
             a='     '
             s=''
+            
             if floor==lift_floor+1:
                 if lift_dir==DIR_DOWN:
                     a='  v  '
@@ -80,6 +81,16 @@ while True:
                 t='|---|'
                 if human_in_lift:
                     a='| H |'
+                if human_in_lift and lift_target_floor==lift_floor:
+                    a='|   |'
+                    s="H"
+
+                if human_floor == lift_floor and not human_in_lift:
+                    s = "H"
+                    
+       
+
+
                 
             elif floor==lift_floor-1:
                 t='|---|'
@@ -113,7 +124,6 @@ while True:
 
 #HW1 - fix the bug with lift bottom  + 
 #HW2 - fix the bug with the lift indicator at floor 9 + 
-# +---------------------------------------------------------+        
-# | HW3 - fix the bug with H dissappearing when lift arrives|
-# | HW4 - add code when lift arrives -human exits           |     
-# +---------------------------------------------------------+        
+#HW3 - fix the bug with H dissappearing when lift arrives (există o iterație in care nu pot pune ca H sa ramana pe etajul introdus de la tastatura, cand not human in lift) 
+#HW4 - add code when lift arrives -human exits +                 
+    
