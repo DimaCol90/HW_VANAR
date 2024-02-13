@@ -20,10 +20,12 @@ user_input = True
 guess_pin = 3
 guess_card = 3
 
+print()
+print("                 ------WELCOME TO THE ATM---------")
+print()
+
 while True:
-    print()
-    print("                 ------WELCOME TO THE ATM---------")
-    print()
+    
     user_card_number = input("What is your card number? ")
     if user_card_number == client["card_number"]:
         while guess_pin > 0:
@@ -44,18 +46,18 @@ while True:
                         print(client["balance_amount"]/100,"$")
                         user_input = input("Any other actions? (y/n) ").lower() == 'y'
                     elif user_request == '2':
-                        print("You have", {client["balance_amount"] / 100}, "$")
+                        print("You have", client["balance_amount"] / 100, "$")
                         amount_to_take = int(input("How much money you want to take out? ")) * 100
                         if amount_to_take <= client["balance_amount"]:
                             print(f"wait for the ATM to count out {amount_to_take / 100}$")
                             time.sleep(2)
                             client["balance_amount"] -= amount_to_take
-                            print("your remaining amount is ", {client["balance_amount"] / 100}, "$")
+                            print("your remaining amount is ", client["balance_amount"] / 100, "$")
                             user_input = input("Any other actions? (y/n) ").lower() == 'y'
                         else:
                             print("non-sufficient funds")
                     elif user_request == "3":
-                        user_pin = input("one more time your old PIN code please")
+                        user_pin = input("one more time your old PIN code please: ")
                         if user_pin == client["PIN"]:
                             client["PIN"] = input("Enter your new PIN ")
                             print(client["PIN"], "is your new PIN code ")
